@@ -11,11 +11,17 @@ const CustomerRepository = (db) => {
         }
     };
 
-    const list = async (page, size) => {
+    const list = async (page, size, sortBy = 'created_at', sortType = 'ASC') => {
 
         try {
             const offset = size * (page - 1);
-            const { count, rows} = await Customer(db).findAndCountAll({ offset: offset, limit: size });
+            const { count, rows } = await Customer(db).findAndCountAll({
+                offset,
+                limit: size,
+                order: [
+                    [sortBy, sortType]
+                ]
+            });
             return { count, rows };
         } catch (error) {
             return error.message;
