@@ -18,7 +18,7 @@
     "address": "String",
     "phone": "Date",
     "email": "String",
-    "balance": "Number",
+    "balance": "Number"
 }
 ```
 
