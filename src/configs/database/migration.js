@@ -1,12 +1,16 @@
 import Customer from "../../models/customer.js";
 import User from "../../models/user.js";
+import Address from "../../models/address.js";
 
 const Migration = async (db) => {
 
    const customer = Customer(db);
    const user = User(db);
-   await customer.hasOne(user);
-   await user.belongsTo(customer);
+   const address = Address(db);
+   customer.hasOne(user);
+   user.belongsTo(customer);
+   customer.hasMany(address);
+   address.belongsTo(customer);
 
    await db.sync({alter:true});
 
