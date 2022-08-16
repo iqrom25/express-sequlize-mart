@@ -39,7 +39,13 @@ Response:
           "updatedAt": "Timestamp",
           "createdAt": "Timestamp",
           "deletedAt": "Timestamp"
-      }
+      },
+       "paging": {
+        "page": "Number",
+        "totalPages": "Number",
+        "totalRows": "Number",
+        "rowsPerPage": "Number"
+    }
   }
   ```
 
