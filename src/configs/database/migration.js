@@ -8,7 +8,9 @@ const Migration = async (db) => {
    await customer.hasOne(user);
    await user.belongsTo(customer);
 
-   await db.sync({alter:true})
+   await db.sync({alter:true});
+
+
 };
 
 export default Migration;
