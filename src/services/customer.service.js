@@ -19,14 +19,22 @@ const CustomerService = (CustomerRepository) => {
     const findAllCustomer = async (page, size, sortBy, sortType) => {
         try {
 
+
+
             if (!Number(page)) page = 1;
             if (!Number(size)) size = 2;
-            
-            const fixedPage = page;
-            const fixedSize = size;
 
-            const { count, rows } = await list(fixedPage, fixedSize, sortBy, sortType);
-            return { count, rows, fixedPage, fixedSize };
+            if (!(sortBy === 'name' || sortBy === 'address' || sortBy === 'phone' || sortBy === 'email' || sortBy === 'name' || sortBy === 'balance')) {
+                sortBy = 'created_at';
+            }
+
+            if (!(sortType.toLowerCase() === 'asc' || sortType.toLowerCase() === 'desc')) { 
+                sortType = 'asc'; 
+              
+            }
+
+            const { count, rows } = await list(page, size, sortBy, sortType);
+            return { count, rows, page, size, sortBy, sortType };
 
         } catch (error) {
             return error.message;

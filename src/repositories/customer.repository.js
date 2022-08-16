@@ -11,7 +11,7 @@ const CustomerRepository = (db) => {
         }
     };
 
-    const list = async (page, size, sortBy = 'created_at', sortType = 'ASC') => {
+    const list = async (page, size, sortBy, sortType) => {
 
         try {
             const offset = size * (page - 1);
