@@ -22,7 +22,7 @@ const CustomerController = (customerService) => {
             
             const { page, size, sortBy, sortType } = req.query;
             const { count, rows, fixedPage ,fixedSize } = await findAllCustomer(page, size, sortBy, sortType);
-            res.send(Response().pagination(res.statusCode, 'SUCCESS', rows, +fixedPage, count, +fixedSize));
+            res.send(Response().pagination(res.statusCode, 'SUCCESS', rows, +fixedPage, count, +fixedSize, sortBy,sortType));
         } catch (error) {
             res.status(500).send(Response().errorMessage(res.statusCode, error.message));
         }

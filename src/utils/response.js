@@ -5,7 +5,7 @@ const Response = () => {
     const errorMessage = (code, message) => { return { code, message, data: null } };
 
     const pagination = (
-        code, message, data, page, totalItem, size
+        code, message, data, page, totalItem, size, sortBy,sortType
     ) => {
         return {
             code,
@@ -16,6 +16,10 @@ const Response = () => {
                 totalPages: Math.ceil(totalItem / size),
                 totalRows: totalItem,
                 rowsPerPage: size
+            },
+            order : {
+                sortBy,
+                sortType
             }
         }
     };
