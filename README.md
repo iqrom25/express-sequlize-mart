@@ -7,7 +7,7 @@
 
 #### Create Customer
 - Request: POST
-- Endpoint : `/customer`
+- Endpoint : `/customers`
 - Header :
     - Content-Type: application/json
     - Accept: application/json
@@ -51,7 +51,7 @@ Response:
 
 #### List Customer
 - Request: GET
-- Endpoint : `/customer`
+- Endpoint : `/customers`
 - Header :
     - Content-Type: application/json
     
