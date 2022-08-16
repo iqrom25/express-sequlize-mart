@@ -1,20 +1,22 @@
 import Customer from '../models/customer.js'
 
-const CustomerRepository =  (db) => {
+const CustomerRepository = (db) => {
 
     const create = async (payload) => {
         try {
-           return await Customer(db).create(payload);
+            return await Customer(db).create(payload);
 
         } catch (error) {
             return error.message;
         }
     };
 
-    const list = async () => {
+    const list = async (page, size) => {
 
         try {
-            return await Customer(db).findAll();
+            const offset = size * (page - 1);
+            const { count, rows } = await Customer(db).findAndCountAll({ offset: offset, limit: size });
+            return { count, rows };
         } catch (error) {
             return error.message;
         }

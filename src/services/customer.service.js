@@ -16,10 +16,11 @@ const CustomerService = (CustomerRepository) => {
         }
     };
 
-    const findAllCustomer = async () => {
+    const findAllCustomer = async (page, size) => {
         try {
 
-            return await list();
+            const { count, rows } = await list(page, size);
+            return { count, rows };
         } catch (error) {
             return error.message;
         }
