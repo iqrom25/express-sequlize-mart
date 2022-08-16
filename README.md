@@ -1,7 +1,5 @@
 ## Market API
 
-## Gold Market API
-
 ### Database Spec
 - PostgreSQL
 
