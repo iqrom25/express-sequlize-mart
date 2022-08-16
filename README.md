@@ -38,7 +38,7 @@ Response:
           "balance": "Number",
           "updatedAt": "Timestamp",
           "createdAt": "Timestamp",
-          "deletedAt": Timestamp
+          "deletedAt": "Timestamp"
       }
   }
   ```
@@ -66,7 +66,7 @@ Response:
           "balance": "Number",
           "updatedAt": "Timestamp",
           "createdAt": "Timestamp",
-          "deletedAt": Timestamp
+          "deletedAt": "Timestamp"
        }
       ]
   }
