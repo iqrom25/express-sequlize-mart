@@ -19,9 +19,10 @@ const CustomerController = (customerService) => {
     const list = async (req, res) => {
 
         try {
+            
             const { page, size } = req.query;
-            const { count, rows } = await findAllCustomer(page, size);
-            res.send(Response().pagination(res.statusCode, 'SUCCESS', rows, page, count, +size));
+            const { count, rows, fixedPage ,fixedSize } = await findAllCustomer(page, size);
+            res.send(Response().pagination(res.statusCode, 'SUCCESS', rows, +fixedPage, count, +fixedSize));
         } catch (error) {
             res.status(500).send(Response().errorMessage(res.statusCode, error.message));
         }

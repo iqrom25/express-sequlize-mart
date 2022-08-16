@@ -18,9 +18,16 @@ const CustomerService = (CustomerRepository) => {
 
     const findAllCustomer = async (page, size) => {
         try {
+            
+            if (!Number(page)) page = 1;
+            if (!Number(size)) size = 2;
+            
+            const fixedPage = page;
+            const fixedSize = size;
 
-            const { count, rows } = await list(page, size);
-            return { count, rows };
+            const { count, rows } = await list(fixedPage, fixedSize);
+            return { count, rows, fixedPage, fixedSize };
+
         } catch (error) {
             return error.message;
         }

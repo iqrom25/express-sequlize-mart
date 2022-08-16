@@ -15,7 +15,7 @@ const CustomerRepository = (db) => {
 
         try {
             const offset = size * (page - 1);
-            const { count, rows } = await Customer(db).findAndCountAll({ offset: offset, limit: size });
+            const { count, rows} = await Customer(db).findAndCountAll({ offset: offset, limit: size });
             return { count, rows };
         } catch (error) {
             return error.message;
