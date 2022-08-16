@@ -5,11 +5,12 @@ const Response = () => {
     const errorMessage = (code, message) => { return { code, message, data: null } };
 
     const pagination = (
-        code, message, data, page, totalItem, size, sortBy,sortType
+        code, message, data, page, totalItem, size, sortBy,sortType, keyword = ''
     ) => {
         return {
             code,
             message,
+            keyword,
             data,
             paging: {
                 page,

@@ -16,24 +16,23 @@ const CustomerService = (CustomerRepository) => {
         }
     };
 
-    const findAllCustomer = async (page, size, sortBy, sortType) => {
+    const findAllCustomer = async (page, size, sortBy, sortType, keyword) => {
         try {
-
-
-
             if (!Number(page)) page = 1;
             if (!Number(size)) size = 2;
 
-            if (!(sortBy === 'name' || sortBy === 'address' || sortBy === 'phone' || sortBy === 'email' || sortBy === 'name' || sortBy === 'balance')) {
+            if (!(sortBy === 'name' || sortBy === 'address' || sortBy === 'phone' || sortBy === 'email' || sortBy === 'balance')) {
                 sortBy = 'created_at';
             }
 
-            if (!(sortType.toLowerCase() === 'asc' || sortType.toLowerCase() === 'desc')) { 
-                sortType = 'asc'; 
-              
+            if (!(sortType.toLowerCase() === 'asc' || sortType.toLowerCase() === 'desc')) {
+                sortType = 'asc';
+
             }
 
-            const { count, rows } = await list(page, size, sortBy, sortType);
+            if (!keyword) keyword = '';
+
+            const { count, rows } = await list(page, size, sortBy, sortType, keyword);
             return { count, rows, page, size, sortBy, sortType };
 
         } catch (error) {
@@ -41,9 +40,36 @@ const CustomerService = (CustomerRepository) => {
         }
     };
 
+    const findCustomerById = async (id) => {
+        try {
+            return await getById(id);
+        } catch (error) {
+            return error.message;
+        }
+    };
+
+    const removeCustomer = async (id) => {
+        try {
+            return await remove(id);
+        } catch (error) {
+            return error.message;
+        }
+    }
+
+    const updateOldCustomer = async (payload) => {
+        try {
+            return await update(payload);
+        } catch (error) {
+            return error.message;
+        }
+    }
+
     return {
         registerNewCustomer,
-        findAllCustomer
+        findAllCustomer,
+        findCustomerById,
+        updateOldCustomer,
+        removeCustomer
     };
 };
 
