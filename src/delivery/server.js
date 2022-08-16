@@ -31,7 +31,7 @@ const Server = () => {
 
     app.use(express.json());
 
-    Migration(initDb());
+    // Migration(initDb());
 
     app.use(AppRoute(customerRoute,userRoute));
 
